@@ -1,0 +1,6 @@
+@PostAIWebAPI_HostAddress = http://localhost:5202
+
+GET {{PostAIWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
