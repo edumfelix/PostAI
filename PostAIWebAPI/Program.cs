@@ -3,29 +3,22 @@ using Microsoft.EntityFrameworkCore;
 using PostAIWebAPI.Config;
 using PostAIWebAPI.Data;
 using PostAIWebAPI.Models;
-using PostAIWebAPI.Models.Context;
 using PostAIWebAPI.Repository;
-using PostAIWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<GetCanvaApiService>();
-builder.Services.AddHttpClient<PostCanvaApiService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("PSQLConnectionString");
+var connectionString = builder.Configuration["PSQLConnectionString"];
 
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseNpgsql(connectionString));
 
-builder.Services.AddDbContext<PsqlContext>(options =>
-options.UseNpgsql(connectionString)
-);
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();

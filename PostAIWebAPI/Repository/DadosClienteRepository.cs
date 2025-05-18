@@ -2,16 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using PostAIWebAPI.Controllers.Data.ValueObject;
 using PostAIWebAPI.Models;
-using PostAIWebAPI.Models.Context;
+using PostAIWebAPI.Data;
 
 namespace PostAIWebAPI.Repository
 {
     public class DadosClienteRepository : IDadosClienteRepository
     {
-        private readonly PsqlContext _context;
+        private readonly AppDbContext _context;
         private IMapper _mapper;
 
-        public DadosClienteRepository(PsqlContext context, IMapper mapper)
+        public DadosClienteRepository(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
